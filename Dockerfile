@@ -7,7 +7,7 @@ ARG UID
 ARG GID
 
 RUN apk -U upgrade \
-    && apk add libstdc++ \
+    && apk add git libstdc++ \
     && npm update -g npm
 
 RUN --network=none \
