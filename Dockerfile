@@ -25,4 +25,4 @@ RUN git clone https://github.com/LHNCBC/formbuilder-lhcforms/ \
 
 WORKDIR /home/lhcforms/formbuilder-lhcforms
 
-CMD [ "npm", "start" ]
+CMD [ "npm", "start-public" ]
