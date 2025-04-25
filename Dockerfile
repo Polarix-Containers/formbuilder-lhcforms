@@ -19,7 +19,6 @@ WORKDIR /home/lhcforms
 
 RUN git clone https://github.com/LHNCBC/formbuilder-lhcforms/ \
     && cd formbuilder-lhcforms \
-    && npm ci \
     && npm audit fix --audit-level=none \
     && npm run build
 
