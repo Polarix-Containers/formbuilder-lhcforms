@@ -20,7 +20,8 @@ WORKDIR /home/lhcforms
 RUN git clone https://github.com/LHNCBC/formbuilder-lhcforms/ \
     && cd formbuilder-lhcforms \
     && npm audit fix --audit-level=none \
-    && npm run build
+    && npm run build \
+    && rm -rf /home/lhcforms/.cache/Cypress/
 
 WORKDIR /home/lhcforms/formbuilder-lhcforms
 
