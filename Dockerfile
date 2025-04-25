@@ -24,6 +24,8 @@ RUN git clone https://github.com/LHNCBC/formbuilder-lhcforms/ \
 
 WORKDIR /home/lhcforms/formbuilder-lhcforms
 
+EXPOSE 9030/tcp
+
 ENV NODE_OPTIONS=--max_old_space_size=4096
 
 CMD [ "npm", "run", "start-public", "--", "--dist" ]
