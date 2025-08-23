@@ -1,0 +1,9 @@
+services:
+
+  formbuilder-lhcforms:
+    image: ghcr.io/polarix-containers/formbuilder-lhcforms:latest
+    security_opt: [ "no-new-privileges=true" ]
+    cap_drop: [ ALL ]
+    read_only: true
+    ports:
+      - "8080:8080"
