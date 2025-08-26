@@ -46,6 +46,9 @@ RUN git clone https://github.com/LHNCBC/formbuilder-lhcforms/ \
 #   https://github.com/LHNCBC/lforms-loader/blob/0eede528c0c1823b199d6fcea94dde1fb2c563d1/source/lformsLoader.js#L7
 #   -> `const DEFAULT_LFORMS_SOURCE = '/lhcforms/';`
     && sed -i "s|\( DEFAULT_LFORMS_SOURCE \).*|\1= '/lhcforms/';|" node_modules/lforms-loader/source/lformsLoader.js \
+#   https://github.com/LHNCBC/formbuilder-lhcforms/blob/172367ddba251b14ffafeaa626b9ec6665ec3bbb/src/index.html#L10
+#   -> `<link href="/extra-assets/MaterialIcons.css" rel="stylesheet">`
+    && sed -i 's|https://fonts\.googleapis\.com/icon?family=Material+Icons|/extra-assets/MaterialIcons.css|' src/index.html \
     && npm run build
 
 
@@ -76,7 +79,8 @@ COPY --from=build-formbuilder --chown=0:0 /home/lhcforms/formbuilder-lhcforms/di
 
 COPY --from=build-lhcforms --chown=0:0 /home/lhcforms/webroot/lhcforms /usr/share/nginx/html/lhcforms
 
-COPY nginx-default.conf /etc/nginx/conf.d/default.conf
+COPY src/extra-assets /usr/share/nginx/html/extra-assets
+COPY src/nginx-default.conf /etc/nginx/conf.d/default.conf
 
 HEALTHCHECK NONE
 
